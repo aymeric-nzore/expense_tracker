@@ -4,7 +4,6 @@ import 'package:expense_tracker_app/features/auth/presentation/utils/my_icon_til
 import 'package:expense_tracker_app/features/auth/presentation/utils/my_textfield.dart';
 import 'package:expense_tracker_app/features/auth/presentation/utils/mypasswordfiels.dart';
 import 'package:expense_tracker_app/features/auth/services/auth_service.dart';
-import 'package:expense_tracker_app/features/expenses/presentation/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,11 +54,8 @@ class _RegisterPageState extends State<RegisterPage> {
       // Fermer le loader
       Navigator.of(context).pop();
 
-      // Redirection vers Home ou Login (selon ton choix)
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
+      // Revenir à la racine pour laisser AuthGate rediriger
+      Navigator.of(context).popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
       Navigator.of(context).pop(); // enlever le loader
 

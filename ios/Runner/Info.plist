@@ -45,5 +45,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- Permissions pour la galerie photos -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Cette application a besoin d'accéder à votre galerie de photos pour télécharger votre photo de profil.</string>
+	<key>NSPhotoLibraryAddOnlyUsageDescription</key>
+	<string>Cette application a besoin de permission pour enregistrer des photos dans votre galerie.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Cette application a besoin d'accéder à votre caméra pour prendre des photos.</string>
 </dict>
 </plist>

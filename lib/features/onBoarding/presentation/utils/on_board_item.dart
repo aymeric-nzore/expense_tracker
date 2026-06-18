@@ -23,7 +23,7 @@ class OnBoardItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(image, height: 400),
+              SvgPicture.asset(image, height: 320),
               Text(
                 textAlign: TextAlign.center,
                 title,
@@ -33,7 +33,7 @@ class OnBoardItem extends StatelessWidget {
                   color: textColor,
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
               Text(
                 description,
                 style: TextStyle(fontSize: 16, color: Colors.grey,fontWeight: FontWeight.w600),

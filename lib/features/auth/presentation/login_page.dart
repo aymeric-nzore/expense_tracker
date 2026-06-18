@@ -3,7 +3,6 @@ import 'package:expense_tracker_app/features/auth/presentation/utils/my_button.d
 import 'package:expense_tracker_app/features/auth/presentation/utils/my_icon_tile.dart';
 import 'package:expense_tracker_app/features/auth/presentation/utils/my_textfield.dart';
 import 'package:expense_tracker_app/features/auth/services/auth_service.dart';
-import 'package:expense_tracker_app/features/expenses/presentation/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,6 +22,16 @@ class _LoginPageState extends State<LoginPage> {
   bool isObscurepassword = true;
 
   Future signIn() async {
+    if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Please fill all fields"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     try {
       // Loader
       showDialog(
@@ -42,8 +51,8 @@ class _LoginPageState extends State<LoginPage> {
       // Close loader
       Navigator.of(context).pop();
 
-      // Redirection
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+      // Revenir à la racine pour laisser AuthGate rediriger
+      Navigator.of(context).popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
       Navigator.of(context).pop(); // enlever le loader
 
